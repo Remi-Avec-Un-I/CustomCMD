@@ -3,6 +3,5 @@ A rewrite of Custom_CMD (written in python) in c#, with better menus, more optio
 
 ----
 Known Issues:
-  - no prompt help
   - After compiling, you need to move every file from net7.0 to the root folder to read correctly .json files
 ----
