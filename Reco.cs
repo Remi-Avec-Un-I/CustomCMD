@@ -19,7 +19,6 @@ class Reco
         string result = "";
         int suggestion;
         bool isSug = false;
-        bool breaking = false;
         string currentSug = "";
         while (true)
         {
@@ -59,7 +58,6 @@ class Reco
                         Console.Write(command.Substring(result.Trim().Length));
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.SetCursorPosition(Console.CursorLeft - suggestion, Console.CursorTop);
-                        breaking = true;
                         isSug = true;
                         currentSug = command;
                         break;
