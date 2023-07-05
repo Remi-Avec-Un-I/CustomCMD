@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Text.Json;
@@ -149,12 +149,12 @@ public class ReadPrompt
             }
             else if (x > 4) x = 4;
 
-            x_options.Add(new Option(CustomCMD.GetValue("edit"), () => EditMenu(x)));
-            x_options.Add(new Option(CustomCMD.GetValue("add_right"), () => AddEmpty(x, 1)));
-            x_options.Add(new Option(CustomCMD.GetValue("add_left"), () => AddEmpty(x, 0)));
-            x_options.Add(new Option(CustomCMD.GetValue("delete"), () => Delete(x)));
+            x_options.Add(new Option(CustomCMD.GetValue("edit"), () => EditMenu(y)));
+            x_options.Add(new Option(CustomCMD.GetValue("add_right"), () => AddEmpty(y, 1)));
+            x_options.Add(new Option(CustomCMD.GetValue("add_left"), () => AddEmpty(y, 0)));
+            x_options.Add(new Option(CustomCMD.GetValue("delete"), () => Delete(y)));
             x_options.Add(new Option(CustomCMD.GetValue("cancel"), () => { }));
-            WriteComplexMenu(x_options, y_options, x_options[x], y_options[y]);
+            WriteComplexMenu(x_options, y_options, x_options[x], y);
             ConsoleKeyInfo key = Console.ReadKey(true);
             if (key.Key == ConsoleKey.LeftArrow)
             {
@@ -282,9 +282,10 @@ public class ReadPrompt
         List<string> prompt = GetPrompt();
         prompt.RemoveAt(index);
         Edit(prompt);
+        Editing();
     }
 
-    private static void WriteComplexMenu(List<Option> x_options, List<string> y_options, Option x_selected, string y_selected, string title="", string end="")
+    private static void WriteComplexMenu(List<Option> x_options, List<string> y_options, Option x_selected, int y_selected, string title="", string end="")
     {
         if (title != "") Console.WriteLine(title);
         foreach (Option option in x_options)
@@ -302,16 +303,30 @@ public class ReadPrompt
         Console.WriteLine(end);
         int tab = 0;
         bool found = false;
+        int index = -1;
+        int length = 0;
         foreach (string option in y_options)
         {
-            if (option == y_selected)
+            index++;
+            if (Menu.Menu.colorsBack.Values.Contains(option) 
+                || Menu.Menu.colorsFore.Values.Contains(option) 
+                || Menu.Menu.styles.Values.Contains(option)
+                || option == "\u001b[0m")
+            {
+                length = 0;
+            }
+            else
+            {
+                length = option.Length;
+            }
+            if (index == y_selected)
             {
                 found = true;
-                tab += Math.Abs(option.Length / 2);
+                tab += Math.Abs(length / 2);
             }
             else if (!found)
             {
-                tab += option.Length + 1;
+                tab += length + 1;
             }
             Console.Write(option + " ");
         }
@@ -327,7 +342,7 @@ public class ReadPrompt
     {
         public string Name { get; }
         public Action Selected { get; }
-
+        public int index { get; set; }
         public Option(string name, Action selected)
         {
             Name = name;
