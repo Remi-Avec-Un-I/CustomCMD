@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <BaseOutputPath></BaseOutputPath>
+    <BaseIntermediateOutputPath />
+  </PropertyGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="for /f &quot;tokens=*&quot; %25%25a in ('dir /b /s /a-d bin\Debug\*.*') do move /y &quot;%25%25a&quot; .&#xD;&#xA;" />
+  </Target>
+
+</Project>
