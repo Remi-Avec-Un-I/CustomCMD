@@ -18,6 +18,7 @@
   "lang": "Displays or change the language.",
   "lang.help": "\n=== Lang Command ===\nUsage: lang [command]\n        \\-> Alias : changelang / editlang / language\n\nCommands:\n  list         : List all available languages\n  edit         : Change the language interactively\n   \\-> Alias : change / edit\n  <language>       : Set the current language to the specified value\n\nExample:\n  lang en   : Set the current language to English\n",
   "prompt": "Displays or change the prompt.",
+  "prompt.help": "\n=== Prompt Command ===\nUsage: prompt [command]\n        \\-> Alias : changeprompt / editprompt\n\nCommands:\n  show         : Displays the current prompt\n  edit         : Change the prompt interactively\n   \\-> Alias : change / edit\n\nExample:\n  prompt edit   : Edit the prompt as you want\n",
   "prompt.show": "The current prompt is : ",
   "prompt.custom": "Write a custom element.",
   "prompt.path": "Displays the path.",
@@ -30,5 +31,7 @@
   "prompt.user": "Displays the current user.",
   "prompt.os": "Displays the current OS version.",
   "prompt.workingset": "Displays the amount of memory used by the current process.",
-  "prompt.time" : "Displays the current time."
+  "prompt.time": "Displays the current time.",
+  "prompt.date": "Displays the current date.",
+  "prompt.newline": "Adds a new line."
 }

@@ -18,6 +18,7 @@
   "lang": "Affiche ou permet de changer la langue.",
   "lang.help": "\n=== Commande Lang ===\nUtilisation : lang [commande]\n               \\-> Alias : changelang / editlang / language\n\nCommandes :\n  list         : Affiche toutes les langues disponibles\n  edit         : Modifier la langue de manière interactive\n   \\-> Alias : change / edit\n  <langue>     : Définir la langue actuelle sur la valeur spécifiée\n\nExemple :\n  lang en      : Définir la langue actuelle en anglais\n",
   "prompt": "Affiche ou permet de changer le prompt.",
+  "prompt.help": "\n=== Commande Prompt ===\nUtilisation : prompt [commande]\n               \\-> Alias : changeprompt / editprompt\n\nCommandes :\n  show         : Affiche le prompt actuel\n  edit         : Modifier le prompt de manière interactive\n   \\-> Alias : change / edit\n\nExemple :\n  prompt edit     : Modifiez le prompt comme vous le voulez\n",
   "prompt.show": "Le prompt est maintenant : ",
   "prompt.custom": "Écrivez un élément personalisé",
   "prompt.path": "Affiche le chemin actuel.",
@@ -30,5 +31,7 @@
   "prompt.user": "Affiche le nom d'utilisateur.",
   "prompt.os": "Affiche la version de l'OS.",
   "prompt.workingset": "Affiche la mémoire utilisé par ce processus.",
-  "prompt.time": "Affiche l'heure actuelle."
+  "prompt.time": "Affiche l'heure actuelle.",
+  "prompt.date": "Affiche la date actuelle.",
+  "prompt.newline": "Ajoute un retour à la ligne."
 }
