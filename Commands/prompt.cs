@@ -124,10 +124,12 @@ public class ReadPrompt
 
     public static void Write()
     {
-        List<Menu.Option> options = new List<Menu.Option>();
-        options.Add(new Menu.Option(CustomCMD.GetValue("edit"), Editing));
-        options.Add(new Menu.Option(CustomCMD.GetValue("reset"), Reset));
-        options.Add(Menu.Menu.Cancel);
+        List<Menu.Option> options = new List<Menu.Option>
+        {
+            new Menu.Option(CustomCMD.GetValue("edit"), Editing),
+            new Menu.Option(CustomCMD.GetValue("reset"), Reset),
+            Menu.Menu.Cancel
+        };
         Menu.Menu.RunMenu(options);
     }
 
@@ -214,11 +216,11 @@ public class ReadPrompt
             new Menu.Option(CustomCMD.GetValue("prompt.os"), () => EditIndex(index, "%os")),
             new Menu.Option(CustomCMD.GetValue("prompt.workingset"), () => EditIndex(index, "%workingset")),
             new Menu.Option(CustomCMD.GetValue("prompt.time"), () => EditIndex(index, "%time")),
-            // TODO: add other %special
+            new Menu.Option(CustomCMD.GetValue("prompt.date"), () => EditIndex(index, "%date")),
+            new Menu.Option(CustomCMD.GetValue("prompt.newline"), () => EditIndex(index, "%newline")),
             Menu.Menu.Cancel
         };
         Menu.Menu.RunMenu(options);
-        // Editing();
     }
 
     private static void EditIndex(int index, string value)
@@ -249,7 +251,6 @@ public class ReadPrompt
             Menu.Menu.Cancel
         };
         Menu.Menu.RunMenu(options);
-        // Editing();
     }
 
     private static void MenuColors(int index, Dictionary<string, string> colors)
@@ -266,7 +267,6 @@ public class ReadPrompt
         options.Add(new Menu.Option(CustomCMD.GetValue("prompt.reset"), () => EditIndex(index, Menu.Menu.reset["reset"])));
         options.Add(Menu.Menu.Cancel);
         Menu.Menu.RunMenu(options);
-        // Editing();
     }
 
     private static void AddEmpty(int index, int padd = 0)
@@ -274,7 +274,6 @@ public class ReadPrompt
         List<string> prompt = GetPrompt();
         prompt.Insert(index + padd, "---");
         Edit(prompt);
-        // Editing();
     }
 
     private static void Delete(int index)
@@ -282,7 +281,6 @@ public class ReadPrompt
         List<string> prompt = GetPrompt();
         prompt.RemoveAt(index);
         Edit(prompt);
-        // Editing();
     }
 
     private static void WriteComplexMenu(List<Option> x_options, List<string> y_options, Option x_selected, int y_selected, string title="", string end="")
