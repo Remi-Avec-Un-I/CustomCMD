@@ -178,9 +178,9 @@ public class ReadPrompt
             }
             else if (key.Key == ConsoleKey.Enter)
             {
+                if (x == x_options.Count - 1) break;
                 x_options[x].Selected();
                 Console.CursorVisible = true;
-                break;
             }
             x_options.Clear();
         }
@@ -218,7 +218,7 @@ public class ReadPrompt
             Menu.Menu.Cancel
         };
         Menu.Menu.RunMenu(options);
-        Editing();
+        // Editing();
     }
 
     private static void EditIndex(int index, string value)
@@ -249,7 +249,7 @@ public class ReadPrompt
             Menu.Menu.Cancel
         };
         Menu.Menu.RunMenu(options);
-        Editing();
+        // Editing();
     }
 
     private static void MenuColors(int index, Dictionary<string, string> colors)
@@ -266,7 +266,7 @@ public class ReadPrompt
         options.Add(new Menu.Option(CustomCMD.GetValue("prompt.reset"), () => EditIndex(index, Menu.Menu.reset["reset"])));
         options.Add(Menu.Menu.Cancel);
         Menu.Menu.RunMenu(options);
-        Editing();
+        // Editing();
     }
 
     private static void AddEmpty(int index, int padd = 0)
@@ -274,7 +274,7 @@ public class ReadPrompt
         List<string> prompt = GetPrompt();
         prompt.Insert(index + padd, "---");
         Edit(prompt);
-        Editing();
+        // Editing();
     }
 
     private static void Delete(int index)
@@ -282,7 +282,7 @@ public class ReadPrompt
         List<string> prompt = GetPrompt();
         prompt.RemoveAt(index);
         Edit(prompt);
-        Editing();
+        // Editing();
     }
 
     private static void WriteComplexMenu(List<Option> x_options, List<string> y_options, Option x_selected, int y_selected, string title="", string end="")
