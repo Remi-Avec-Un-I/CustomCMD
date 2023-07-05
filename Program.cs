@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using System.Text.Json;
 using System.Diagnostics;
 using Menu;
@@ -187,4 +187,5 @@ public abstract class Command
 public class Settings
 {
     public string lang { get; set; }
+    public List<string> prompt { get; set; }
 }
