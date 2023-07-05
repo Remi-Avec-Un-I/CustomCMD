@@ -2,6 +2,7 @@ using System.Globalization;
 using System.Text.Json;
 using System.Diagnostics;
 using Menu;
+using Reco;
 using lang;
 using help;
 using prompt;
@@ -10,7 +11,7 @@ public class CustomCMD
 {
     private static string entry_prompt = "> ";
     private static string? lang;
-    private static Dictionary<string, Command> commands;
+    public static Dictionary<string, Command> commands;
     private static string[] help;
 
     static void Main(string[] args)
@@ -129,7 +130,7 @@ public class CustomCMD
         {
             entry_prompt = ReadPrompt.Read();
             Print(entry_prompt, false);
-            string? input = Console.ReadLine();
+            string? input = Reco.Reco.RecoReadLine();
             if (input.Trim() == "") continue;
 
             string[] commandAndArgs = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
